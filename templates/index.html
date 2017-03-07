@@ -9,7 +9,7 @@
     <h2>Thoughts of a dev</h2>
 
     {% for p in posts %}
-    <div id="post"><h3>{{ p[1] }}</h3><p>{{ p[2] }}</p></div>
+    <div id="post"><h3><a href="/read/{{p[0]}}">{{ p[1] }}</a></h3><p>{{ p[2] }}</p></div>
     {% endfor %}
 
 </body>

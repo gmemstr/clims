@@ -7,11 +7,12 @@ app = Flask(__name__, template_folder="../templates/")
 
 @app.route('/')
 def Index():
-    return render_template("index.html", posts=sql.GetPost())
+    return render_template("index.html", posts=reversed(sql.GetPost()))
 
 @app.route('/read/<post>')
 def RenderPost(post):
-    return post
+    data = sql.GetPost(post)
+    return render_template("post.html", data=data)
 
 @app.route('/new/<type>', methods=["PUT"])
 def WritePost(type):

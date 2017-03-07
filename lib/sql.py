@@ -11,5 +11,9 @@ class SqlHandler:
         self.db.commit()
 
     def GetPost(self,post="all"):
-        self.c.execute("SELECT * FROM blog")
-        return self.c.fetchall()
+        if post == "all":
+            self.c.execute("SELECT * FROM blog")
+            return self.c.fetchall()
+        else:
+            self.c.execute("SELECT * FROM blog WHERE id=%s", (post))
+            return self.c.fetchone()
