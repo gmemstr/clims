@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Blog</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Blog</h1>
     <h2>Thoughts of a dev</h2>
 
     {% for p in posts %}
-    <div id="post"><h3><a href="/read/{{p[0]}}">{{ p[1] }}</a></h3><p>{{ p[2] }}</p></div>
+    <div class="{{p[4]}} post"><h3><a href="/read/{{p[0]}}">{{ p[1] }}</a></h3><p>{{ p[2] }}</p></div>
     {% endfor %}
 
 </body>

@@ -18,8 +18,11 @@ def RenderPost(post):
 def WritePost(type):
     title = request.form["title"]
     text = request.form["text"]
-    sql.NewPost(title,text)
-    return text
+    if title == "" or text == "" or title == None or text == None:
+        sql.NewShortPost(title,text)
+        return "Posted new blog post"
+    else:
+        return "No data to post?"
 
 if __name__ == "__main__":
     app.run(port=8080)

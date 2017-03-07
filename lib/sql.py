@@ -5,9 +5,14 @@ class SqlHandler:
         self.db = MySQLdb.connect(user="root",db="blog")
         self.c = self.db.cursor()
 
-    def NewPost(self, title,text):
-        self.c.execute("INSERT INTO blog (title, body) VALUES (%s,%s)",
-            (title, text))
+    def NewShortPost(self, title, text):
+        self.c.execute("INSERT INTO blog (title, body, flags) VALUES (%s,%s)",
+            (title, text, "short"))
+        self.db.commit()
+ 
+    def NewLongPost(self, title, text):
+        self.c.execute("INSERT INTO blog (title, body, flags) VALUES (%s,%s)",
+            (title, text, "long"))
         self.db.commit()
 
     def GetPost(self,post="all"):
